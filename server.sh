@@ -1,4 +1,6 @@
 #!/bin/sh
+yarn install
+
 echo "What's your mysql db user id?"
 read user
 
