@@ -1,5 +1,6 @@
 #!/bin/sh
 yarn install
+mkdir dist
 
 echo "What's your mysql db user id?"
 read user
