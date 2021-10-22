@@ -2,7 +2,7 @@
 yarn install
 mkdir dist
 
-echo "What's your mysql db user id?"
+echo "What's your MySQL DB user?"
 read user
 
 mysqladmin -u $user -p create startups_inc
