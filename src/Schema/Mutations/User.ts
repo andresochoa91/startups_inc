@@ -34,3 +34,15 @@ export const UPDATE_USER = {
     return user;
   }
 }
+
+export const DELETE_USER = {
+  type: GraphQLString,
+  args: {
+    id: { type: GraphQLID },
+  },
+  async resolve(parent: any, args: any) {
+    let user = await User.findOne(args.id);
+    await user?.remove();
+    return "User successfully deleted";
+  }
+}

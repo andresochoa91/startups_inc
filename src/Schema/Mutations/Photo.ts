@@ -16,3 +16,15 @@ export const CREATE_PHOTO = {
     return photo;
   }
 }
+
+export const DELETE_PHOTO = {
+  type: GraphQLString,
+  args: {
+    id: { type: GraphQLID },
+  },
+  async resolve(parent: any, args: any) {
+    const photo = await Photo.findOne(args.id);
+    photo?.remove();
+    return "Photo successfully deleted";
+  }
+}
