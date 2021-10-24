@@ -6,7 +6,7 @@ export class Photo extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ nullable: false })
   url!: string;
 
   @ManyToOne(() => User, user => user.photos, { onDelete: 'CASCADE' })

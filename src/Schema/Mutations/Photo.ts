@@ -10,10 +10,22 @@ export const CREATE_PHOTO = {
     userId: { type: GraphQLID }
   },
   async resolve(parent: any, args: any) {
-    const { url, userId } = args;
-    const user = await User.findOne(userId);
-    const photo = await Photo.create({ url, user }).save();
-    return photo;
+    try {
+      const { url, userId } = args;
+      if (!userId) throw 'No userId argument'; 
+      if (!url) throw 'No url argument'; 
+  
+      const user = await User.findOne(userId);
+      
+      if (user) {
+        const photo = await Photo.create({ url, user }).save();
+        return photo;
+      }
+      
+      throw 'User not found';
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
@@ -23,8 +35,17 @@ export const DELETE_PHOTO = {
     id: { type: GraphQLID },
   },
   async resolve(parent: any, args: any) {
-    const photo = await Photo.findOne(args.id);
-    photo?.remove();
-    return "Photo successfully deleted";
+    try {
+      const { id } = args;
+      if (!id) throw "No id argument";
+      const photo = await Photo.findOne(id);
+
+      if (!photo) throw "User not found";
+      
+      photo?.remove();
+      return "Photo successfully deleted";
+    } catch (error) {
+      throw error;
+    }
   }
 }
