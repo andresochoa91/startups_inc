@@ -14,7 +14,6 @@ export const CREATE_PHOTO = {
       const { url, userId } = args;
       if (!userId) throw 'No userId argument'; 
       if (!url) throw 'No url argument'; 
-  
       const user = await User.findOne(userId);
       
       if (user) {
@@ -39,9 +38,7 @@ export const DELETE_PHOTO = {
       const { id } = args;
       if (!id) throw "No id argument";
       const photo = await Photo.findOne(id);
-
       if (!photo) throw "User not found";
-      
       photo?.remove();
       return "Photo successfully deleted";
     } catch (error) {

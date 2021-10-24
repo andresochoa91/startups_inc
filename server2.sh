@@ -4,7 +4,8 @@ function startups_inc () {
   echo "What's your MySQL DB user?"
   read user
   if [ $1 = "db" ]
-  then 
+  then
+    mysql.server start 
     mysql -u $user -p --database=use startups_inc
   elif [ $1 = "dump_db" ]
   then
