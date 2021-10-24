@@ -6,3 +6,4 @@
 3. run `source ./server2.sh` inside your project root directory to access startups_inc commands
 * `startups_inc db` : To access startups_inc database
 * `startups_inc dump_db` : To dump database with new inputs
+4. `yarn dev` to run server
