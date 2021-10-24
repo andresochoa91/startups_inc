@@ -10,9 +10,14 @@ export const CREATE_USER = {
     password: { type: GraphQLString },
   },
   async resolve(parent: any, args: any) {
-    const { name, username, password } = args;
-    await User.insert({name, username, password});
-    return args;
+    try {
+      const { name, username, password } = args;
+      if (!name || !username || !password) throw "name, username and password are required arguments"
+      const user = await User.create({name, username, password}).save();
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
@@ -25,13 +30,19 @@ export const UPDATE_USER = {
     password: { type: GraphQLString },
   },
   async resolve(parent: any, args: any) {
-    let user = await User.findOne(args.id);
-    const { name, username, password } = args;
-    user!.name = name || user!.name;
-    user!.username = username || user!.username;
-    user!.password = password || user!.password;
-    await User.save(user!);
-    return user;
+    try {
+      const { id, name, username, password } = args;
+      if (!id) throw "id is a required argument"
+      let user = await User.findOne(args.id);
+      if (!user) throw "User doesn't exist"
+      user!.name = name || user!.name;
+      user!.username = username || user!.username;
+      user!.password = password || user!.password;
+      await User.save(user!);
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
@@ -41,8 +52,14 @@ export const DELETE_USER = {
     id: { type: GraphQLID },
   },
   async resolve(parent: any, args: any) {
-    let user = await User.findOne(args.id);
-    await user?.remove();
-    return "User successfully deleted";
+    try {
+      if (!args.id) throw "id is a required argument" 
+      let user = await User.findOne(args.id);
+      if (!user) throw "User doesn't exist" 
+      await user?.remove();
+      return "User successfully deleted";
+    } catch (error) {
+      throw error;
+    }
   }
 }
