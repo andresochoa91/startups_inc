@@ -7,3 +7,16 @@
 * `startups_inc db` : To access startups_inc database
 * `startups_inc dump_db` : To dump database with new inputs
 4. `yarn dev` to run node server
+5. When a new typeorm entity is created to connect our server with the database, in index.ts in src directory, we should change synchronize to true, this is located in the createConnection.
+```
+await createConnection({
+    type: "mysql",
+    database: "startups_inc",
+    username: "root",
+    password: "",
+    **logging: true,**
+    synchronize: false,
+    entities: [User, Photo],
+});
+```
+    
