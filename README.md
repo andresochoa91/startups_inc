@@ -14,9 +14,9 @@ await createConnection({
     database: "startups_inc",
     username: "root",
     password: "",
-    **logging: true,**
-    synchronize: false,
+    logging: true,
+    synchronize: true,
     entities: [User, Photo],
 });
 ```
-    
+Once the file is saved, run `yarn dev`, and check the console. Once the tables are being generated, we can put synchronize to `false`, otherwise, every time we save a file, or restart the server, or do a api call, the tables generation is going to be executed over and over again.
