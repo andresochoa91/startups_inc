@@ -13,7 +13,7 @@ import { Photo } from "./Entities/Photo";
     username: "root",
     password: "",
     logging: true,
-    synchronize: false,
+    synchronize: true,
     entities: [User, Photo],
   });
 
