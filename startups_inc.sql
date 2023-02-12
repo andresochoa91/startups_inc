@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.27, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.30, for macos11.6 (x86_64)
 --
 -- Host: localhost    Database: startups_inc
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -75,4 +75,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-24 19:35:21
+-- Dump completed on 2023-02-12 10:06:04

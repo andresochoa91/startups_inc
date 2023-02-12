@@ -20,4 +20,4 @@ await createConnection({
 });
 ```
 * Once the file is saved, run `yarn dev`, and check the console. 
-* Once the tables are being generated, we can put synchronize to `false`, otherwise, every time we save a file, or restart the server, or do a api call, the tables generation is going to be executed over and over again.
+* Once the tables are being generated, in index.ts we can put synchronize to `false`, otherwise, every time we save a file, or restart the server, or do a api call, the tables generation is going to be executed over and over again.
