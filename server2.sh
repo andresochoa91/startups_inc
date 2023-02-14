@@ -15,10 +15,9 @@ startups_inc () {
   fi
 }'
 
-if grep "startups_inc () {" ~/.zshrc; then 
-  echo "Exists" 
-else 
-  echo "Does not exist"
+ZSH_CONTENT=$(cat ~/.zshrc)
+
+if [[ $ZSH_CONTENT != *$STARTUPS_INC* ]]; then
   echo -e $STARTUPS_INC >> ~/.zshrc;
 fi
 
